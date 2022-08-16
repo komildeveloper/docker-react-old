@@ -1,0 +1,12 @@
+sudo: required
+
+services:
+  - docker
+
+before_install:
+  - docker build -t komildeveloper/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true komildeveloper/docker-react npm run test
+
+language: generic 
